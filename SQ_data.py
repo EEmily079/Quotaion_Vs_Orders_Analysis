@@ -139,7 +139,9 @@ fig3 = px.pie(
     names='Customer Name',
     title='Top 5 Leading Customer'
 )
-c1.plotly_chart(fig3,width=1000)
+#move legend to bottom
+fig3.update_layout (legend = dict (orientation = "h", xanchor = 'left',yanchor = 'top'))
+c1.plotly_chart(fig3,width=2000)
 
 #filter total sales by group by selected filters, default is all groups(already defined in df_select)
 sales_by_group = df_select.groupby(['GroupName'])['SO TOTAL'].sum().sort_values(ascending=False).reset_index()
@@ -152,6 +154,8 @@ fig4 = px.pie(
     names='GroupName',
     title='Top 5 Leading Group'
 )
+#move legend to bottom
+fig4.update_layout (legend = dict (orientation = "h", xanchor = 'left',yanchor = 'top'))
 c2.plotly_chart(fig4,width=1000)
 
 st.markdown('---')
